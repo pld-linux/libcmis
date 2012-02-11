@@ -10,6 +10,7 @@ Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
 BuildRequires:	boost-devel
 BuildRequires:	curl-devel
 BuildRequires:	libxml2-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 LibCMIS is a C++ client library for the CMIS interface. This allows
@@ -20,7 +21,6 @@ Alfresco, Nuxeo for the open source ones.
 Summary:	Development files for %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	pkgconfig
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -52,23 +52,24 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -f $RPM_BUILD_ROOT/%{_libdir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING.* README
-%attr(755,root,root) %{_libdir}/%{name}-0.2.so.*
+%doc AUTHORS README
+%attr(755,root,root) %{_libdir}/%{name}-0.2.so.*.*.*
+%ghost %{_libdir}/libcmis-0.2.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}-0.2.so
+%{_includedir}/%{name}
 %{_pkgconfigdir}/%{name}-0.2.pc
 
 %files tools
