@@ -1,4 +1,5 @@
 Summary:	A C++ client library for the CMIS interface
+Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
 Version:	0.1.0
 Release:	1
@@ -17,8 +18,14 @@ LibCMIS is a C++ client library for the CMIS interface. This allows
 C++ applications to connect to any ECM behaving as a CMIS server like
 Alfresco, Nuxeo for the open source ones.
 
+%description -l pl.UTF-8
+LibCMIS to biblioteka klienta C++  dla interfejsu CMIS. Pozwala ona 
+aplikacjom C++ do łączenia się z każdym ECM zachowującym sie jako CMIS
+serwer jak Alfresco, Nuxeo dla otwarto źródłowych aplikacji
+
 %package devel
 Summary:	Development files for %{name}
+Summary(pl.UTF-8):	Pliki nagłówkowe dla %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -26,14 +33,23 @@ Requires:	%{name} = %{version}-%{release}
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
+%description devel -l pl.UTF-8
+Paczka %{name}-devel zawiera biblioteki i pliki nagłówkowe do
+tworzenia aplikacji opartych na %{name}.
+
 %package tools
 Summary:	Command line tool to access CMIS
+Summary(pl.UTF-8):	Narzędzie wiersza poleceń dla CMIS
 Group:		Applications/Publishing
 Requires:	%{name} = %{version}-%{release}
 
 %description tools
 The %{name}-tools package contains a tool for accessing CMIS from the
 command line.
+
+%description tools -l pl.UTF-8
+Paczka %{name}-tools zawiera narzędzie do łączenia się do CMIS
+z wiersza poleceń.
 
 %prep
 %setup -q
