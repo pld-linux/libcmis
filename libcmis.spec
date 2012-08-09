@@ -86,8 +86,12 @@ sed -i -e 's/docbook-to-man/docbook2X2man/' configure
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_pkgconfigdir}
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+cp -p %{name}-0.2.pc %{buildroot}/%{_libdir}/pkgconfig
 
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
@@ -108,6 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}-0.2.so
 %{_includedir}/%{name}-0.2
+%{_pkgconfigdir}/libcmis-0.2.pc
 
 %if %{with static_libs}
 %files static
