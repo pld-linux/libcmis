@@ -5,15 +5,16 @@
 Summary:	A C++ client library for the CMIS interface
 Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
-Version:	0.1.0
-Release:	3
+Version:	0.2.3
+Release:	1
 License:	GPL v2+ or LGPL v2+ or MPL v1.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
-# Source0-md5:	4be634617054ada5b6d1886f63160f4f
+# Source0-md5:	0d2dcdfbf28d6208751b33057f5361f0
 URL:		http://sourceforge.net/projects/libcmis/
 BuildRequires:	boost-devel
 BuildRequires:	curl-devel
+BuildRequires:	docbook2X
 BuildRequires:	libstdc++-devel
 BuildRequires:	libxml2-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -72,6 +73,7 @@ poleceń.
 
 %prep
 %setup -q
+sed -i -e 's/docbook-to-man/docbook2X2man/' configure
 
 %build
 %configure \
@@ -100,13 +102,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_libdir}/%{name}-0.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcmis-0.2.so.0
+%attr(755,root,root) %ghost %{_libdir}/libcmis-0.2.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/%{name}-0.2.so
-%{_includedir}/%{name}
-%{_pkgconfigdir}/%{name}-0.2.pc
+%{_includedir}/%{name}-0.2
 
 %if %{with static_libs}
 %files static
@@ -117,3 +118,4 @@ rm -rf $RPM_BUILD_ROOT
 %files tools
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cmis-client
+%{_mandir}/man1/cmis-client.1*
