@@ -13,10 +13,12 @@ Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
 # Source0-md5:	0d2dcdfbf28d6208751b33057f5361f0
 URL:		http://sourceforge.net/projects/libcmis/
 BuildRequires:	boost-devel
-BuildRequires:	curl-devel
+BuildRequires:	curl-devel >= 7.12.3
 BuildRequires:	docbook2X
 BuildRequires:	libstdc++-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	pkgconfig
+Requires:	curl-libs >= 7.12.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,7 +38,9 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki CMIS
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	boost-devel
+Requires:	curl-devel >= 7.12.3
 Requires:	libstdc++-devel
+Requires:	libxml2-devel >= 2.0
 
 %description devel
 This package contains the header files for developing applications
@@ -104,7 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/%{name}-0.2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcmis-0.2.so.2
 
