@@ -1,0 +1,10 @@
+--- libcmis-0.3.0/src/libcmis-c/Makefile.am.orig	2012-09-12 15:52:37.000000000 +0200
++++ libcmis-0.3.0/src/libcmis-c/Makefile.am	2012-09-21 18:58:37.403887089 +0200
+@@ -36,6 +36,7 @@
+ libcmis_c_@LIBCMIS_API_VERSION@_la_LDFLAGS = -export-dynamic -no-undefined -version-info 3:0:0
+ 
+ libcmis_c_@LIBCMIS_API_VERSION@_la_LIBADD = \
++	$(top_builddir)/src/libcmis/libcmis-@LIBCMIS_API_VERSION@.la \
+ 	$(XML2_LIBS) \
+ 	$(CURL_LIBS) \
+ 	$(BOOST_SMART_PTR_LIBS) \
