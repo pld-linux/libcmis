@@ -5,21 +5,21 @@
 Summary:	A C++ client library for the CMIS interface
 Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
-Version:	0.3.1
-Release:	3
+Version:	0.4.1
+Release:	1
 License:	GPL v2+ or LGPL v2+ or MPL v1.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
-# Source0-md5:	a60f503fa011174737dd603fb345d9e1
-Patch0:		%{name}-link.patch
+# Source0-md5:	22f8a85daf4a012180322e1f52a7563b
 URL:		http://sourceforge.net/projects/libcmis/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake
 BuildRequires:	boost-devel
+BuildRequires:	cppunit-devel >= 1.12
 BuildRequires:	curl-devel >= 7.12.3
 BuildRequires:	docbook2X >= 0.8.8-4
 BuildRequires:	libstdc++-devel
-BuildRequires:	libtool >= 2:1.5
+BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
@@ -82,9 +82,8 @@ poleceń.
 
 %prep
 %setup -q
-%patch0 -p1
 
-%{__sed} -i -e 's/docbook-to-man/docbook2X2man/' configure.ac
+#%{__sed} -i -e 's/docbook-to-man/docbook2X2man/' configure.ac
 
 %build
 %{__libtoolize}
@@ -92,6 +91,7 @@ poleceń.
 %{__autoconf}
 %{__automake}
 %configure \
+	DOCBOOK2MAN=/usr/bin/docbook2X2man \
 	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static} \
 	--disable-tests \
@@ -117,25 +117,25 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/libcmis-0.3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcmis-0.3.so.3
-%attr(755,root,root) %{_libdir}/libcmis-c-0.3.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcmis-c-0.3.so.3
+%attr(755,root,root) %{_libdir}/libcmis-0.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcmis-0.4.so.4
+%attr(755,root,root) %{_libdir}/libcmis-c-0.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcmis-c-0.4.so.4
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libcmis-0.3.so
-%attr(755,root,root) %{_libdir}/libcmis-c-0.3.so
-%{_includedir}/libcmis-0.3
-%{_includedir}/libcmis-c-0.3
-%{_pkgconfigdir}/libcmis-0.3.pc
-%{_pkgconfigdir}/libcmis-c-0.3.pc
+%attr(755,root,root) %{_libdir}/libcmis-0.4.so
+%attr(755,root,root) %{_libdir}/libcmis-c-0.4.so
+%{_includedir}/libcmis-0.4
+%{_includedir}/libcmis-c-0.4
+%{_pkgconfigdir}/libcmis-0.4.pc
+%{_pkgconfigdir}/libcmis-c-0.4.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libcmis-0.3.a
-%{_libdir}/libcmis-c-0.3.a
+%{_libdir}/libcmis-0.4.a
+%{_libdir}/libcmis-c-0.4.a
 %endif
 
 %files tools
