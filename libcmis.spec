@@ -5,12 +5,12 @@
 Summary:	A C++ client library for the CMIS interface
 Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
-Version:	0.4.1
-Release:	3
+Version:	0.5.0
+Release:	1
 License:	GPL v2+ or LGPL v2+ or MPL v1.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
-# Source0-md5:	22f8a85daf4a012180322e1f52a7563b
+# Source0-md5:	5821b806a98e6c38370970e682ce76e8
 URL:		http://sourceforge.net/projects/libcmis/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake
@@ -117,25 +117,25 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/libcmis-0.4.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcmis-0.4.so.4
-%attr(755,root,root) %{_libdir}/libcmis-c-0.4.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcmis-c-0.4.so.4
+%attr(755,root,root) %{_libdir}/libcmis-0.5.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcmis-0.5.so.5
+%attr(755,root,root) %{_libdir}/libcmis-c-0.5.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcmis-c-0.5.so.5
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libcmis-0.4.so
-%attr(755,root,root) %{_libdir}/libcmis-c-0.4.so
-%{_includedir}/libcmis-0.4
-%{_includedir}/libcmis-c-0.4
-%{_pkgconfigdir}/libcmis-0.4.pc
-%{_pkgconfigdir}/libcmis-c-0.4.pc
+%attr(755,root,root) %{_libdir}/libcmis-0.5.so
+%attr(755,root,root) %{_libdir}/libcmis-c-0.5.so
+%{_includedir}/libcmis-0.5
+%{_includedir}/libcmis-c-0.5
+%{_pkgconfigdir}/libcmis-0.5.pc
+%{_pkgconfigdir}/libcmis-c-0.5.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libcmis-0.4.a
-%{_libdir}/libcmis-c-0.4.a
+%{_libdir}/libcmis-0.5.a
+%{_libdir}/libcmis-c-0.5.a
 %endif
 
 %files tools
