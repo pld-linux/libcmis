@@ -6,11 +6,12 @@ Summary:	A C++ client library for the CMIS interface
 Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
 Version:	0.5.0
-Release:	5
+Release:	6
 License:	GPL v2+ or LGPL v2+ or MPL v1.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
 # Source0-md5:	5821b806a98e6c38370970e682ce76e8
+Patch0:		%{name}-boost-gcc.patch
 URL:		http://sourceforge.net/projects/libcmis/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake
@@ -82,6 +83,7 @@ poleceń.
 
 %prep
 %setup -q
+%patch0 -p1
 
 #%{__sed} -i -e 's/docbook-to-man/docbook2X2man/' configure.ac
 
