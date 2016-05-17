@@ -5,17 +5,18 @@
 Summary:	A C++ client library for the CMIS interface
 Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
-Version:	0.5.0
-Release:	8
+Version:	0.5.1
+Release:	1
 License:	GPL v2+ or LGPL v2+ or MPL v1.1
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
-# Source0-md5:	5821b806a98e6c38370970e682ce76e8
-Patch0:		%{name}-boost-gcc.patch
+#Source0Download: https://github.com/tdf/libcmis/releases
+Source0:	https://github.com/tdf/libcmis/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	3270154f0f40d86fce849b161f914101
+#Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
 URL:		http://sourceforge.net/projects/libcmis/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake
-BuildRequires:	boost-devel
+BuildRequires:	boost-devel >= 1.36
 BuildRequires:	cppunit-devel >= 1.12
 BuildRequires:	curl-devel >= 7.12.3
 BuildRequires:	docbook2X >= 0.8.8-4
@@ -23,7 +24,6 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
-BuildRequires:	sed >= 4.0
 Requires:	curl-libs >= 7.12.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +43,7 @@ Summary:	Development files for CMIS library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki CMIS
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	boost-devel
+Requires:	boost-devel >= 1.36
 Requires:	curl-devel >= 7.12.3
 Requires:	libstdc++-devel
 Requires:	libxml2-devel >= 2.0
@@ -83,9 +83,6 @@ poleceń.
 
 %prep
 %setup -q
-%patch0 -p1
-
-#%{__sed} -i -e 's/docbook-to-man/docbook2X2man/' configure.ac
 
 %build
 %{__libtoolize}
@@ -118,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS
 %attr(755,root,root) %{_libdir}/libcmis-0.5.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libcmis-0.5.so.5
 %attr(755,root,root) %{_libdir}/libcmis-c-0.5.so.*.*.*
