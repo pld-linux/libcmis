@@ -5,25 +5,27 @@
 Summary:	A C++ client library for the CMIS interface
 Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
-Version:	0.5.1
-Release:	2
+Version:	0.5.2
+Release:	1
 License:	GPL v2+ or LGPL v2+ or MPL v1.1
 Group:		Libraries
 #Source0Download: https://github.com/tdf/libcmis/releases
-Source0:	https://github.com/tdf/libcmis/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	3270154f0f40d86fce849b161f914101
+Source0:	https://github.com/tdf/libcmis/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	3653bc54e1bcd17ae09a1a7086daa38b
 #Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
 URL:		http://sourceforge.net/projects/libcmis/
 BuildRequires:	autoconf >= 2.63
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.10
 BuildRequires:	boost-devel >= 1.36
 BuildRequires:	cppunit-devel >= 1.12
 BuildRequires:	curl-devel >= 7.12.3
 BuildRequires:	docbook2X >= 0.8.8-4
-BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-devel >= 6:4.7
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires:	curl-libs >= 7.12.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
