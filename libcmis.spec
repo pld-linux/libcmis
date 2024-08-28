@@ -5,15 +5,14 @@
 Summary:	A C++ client library for the CMIS interface
 Summary(pl.UTF-8):     Biblioteka klienta C++ dla inferfejsu CMIS
 Name:		libcmis
-Version:	0.5.2
-Release:	9
+Version:	0.6.2
+Release:	1
 License:	GPL v2+ or LGPL v2+ or MPL v1.1
 Group:		Libraries
 #Source0Download: https://github.com/tdf/libcmis/releases
 Source0:	https://github.com/tdf/libcmis/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# Source0-md5:	3653bc54e1bcd17ae09a1a7086daa38b
-#Source0:	http://downloads.sourceforge.net/libcmis/%{name}-%{version}.tar.gz
-URL:		http://sourceforge.net/projects/libcmis/
+# Source0-md5:	61616df853bff53d0044a755b86f288c
+URL:		https://github.com/tdf/libcmis
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	boost-devel >= 1.36
@@ -118,25 +117,25 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
-%attr(755,root,root) %{_libdir}/libcmis-0.5.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcmis-0.5.so.5
-%attr(755,root,root) %{_libdir}/libcmis-c-0.5.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcmis-c-0.5.so.5
+%attr(755,root,root) %{_libdir}/libcmis-0.6.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcmis-0.6.so.6
+%attr(755,root,root) %{_libdir}/libcmis-c-0.6.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libcmis-c-0.6.so.6
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libcmis-0.5.so
-%attr(755,root,root) %{_libdir}/libcmis-c-0.5.so
-%{_includedir}/libcmis-0.5
-%{_includedir}/libcmis-c-0.5
-%{_pkgconfigdir}/libcmis-0.5.pc
-%{_pkgconfigdir}/libcmis-c-0.5.pc
+%attr(755,root,root) %{_libdir}/libcmis-0.6.so
+%attr(755,root,root) %{_libdir}/libcmis-c-0.6.so
+%{_includedir}/libcmis-0.6
+%{_includedir}/libcmis-c-0.6
+%{_pkgconfigdir}/libcmis-0.6.pc
+%{_pkgconfigdir}/libcmis-c-0.6.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libcmis-0.5.a
-%{_libdir}/libcmis-c-0.5.a
+%{_libdir}/libcmis-0.6.a
+%{_libdir}/libcmis-c-0.6.a
 %endif
 
 %files tools
